@@ -12,6 +12,14 @@ export type Product = {
     maxVariantPrice: PriceTypes;
     minVariantPrice: PriceTypes;
   };
+  variants: {
+    nodes: {
+      selectedOptions: {
+        name: string;
+        value: string;
+      }[];
+    }[];
+  };
   images: {
     edges: [
       {
@@ -40,6 +48,14 @@ const productFragment = `
   onlineStoreUrl
   availableForSale
   productType
+  variants(first: 10) {
+    nodes {
+      selectedOptions {
+        name
+        value
+      }
+    }
+  }
   priceRange {
     maxVariantPrice {
       amount
